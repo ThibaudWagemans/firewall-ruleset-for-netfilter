@@ -19,6 +19,8 @@ DROP       udp  --  0.0.0.0/0            0.0.0.0/0            udp dpt:5353
 --------------------------------------
 ufw
 
+Status: active
+
 To                         Action      From
 --                         ------      ----
 22/tcp                     ALLOW       Anywhere
@@ -26,8 +28,19 @@ To                         Action      From
 5353                       DENY        Anywhere
 22                         ALLOW       Anywhere
 2222                       ALLOW       Anywhere
+80                         DENY        Anywhere
+80/tcp                     ALLOW       Anywhere
+21/tcp                     ALLOW       Anywhere
 22/tcp (v6)                ALLOW       Anywhere (v6)
 53 (v6)                    DENY        Anywhere (v6)
 5353 (v6)                  DENY        Anywhere (v6)
 22 (v6)                    ALLOW       Anywhere (v6)
 2222 (v6)                  ALLOW       Anywhere (v6)
+80 (v6)                    DENY        Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+21/tcp (v6)                ALLOW       Anywhere (v6)
+
+--------------------------------------
+
+bind9 /etc/bind/named.conf.options
+allow-transfer {"none"; };
